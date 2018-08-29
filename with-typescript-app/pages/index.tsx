@@ -1,9 +1,7 @@
-import Link from 'next/link'
+import Home from '../src/Home'
 
 export default () =>
   <div>
-    Hello World.{' '}
-    <Link href="/about">
-      <a>About</a>
-    </Link>
+    <Home>
+    </Home>
   </div>
