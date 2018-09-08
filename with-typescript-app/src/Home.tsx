@@ -1,11 +1,17 @@
 import Link from 'next/link'
-import React1a from './React1a'
+import React from 'react';
+import React1a from './components/React1a'
 
-export default () =>
+const Home: React.SFC<{prop1: string, prop2: number}> = () => {
+return (
   <div>
-    Hello World from Home.tsx.{' '}
+    <div>Hello World from Home.tsx!!!</div>
     <Link href="/about">
       <a>About</a>
     </Link>
     <React1a />
   </div>
+)
+}
+
+export default Home;
