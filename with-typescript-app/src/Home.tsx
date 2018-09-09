@@ -8,13 +8,27 @@ import Clock from './components/Clock'
 import Countries from './components/Countries'
 import Button from '@material-ui/core/Button'
 
-const Home: React.SFC<{prop1: string, prop2: number}> = () => {
+const Home = () => {
 return (
   <div>
     <div>Hello World from Home.tsx!!!</div>
     <Link href="/about">
       <a>About</a>
     </Link>
+
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+    <Clock />
+
     <Countries />
     <Button color="primary">Material UI Test Button</Button>
   </div>
