@@ -1,37 +1,45 @@
 import React from 'react';
 
-export default class Clock extends React.Component {
+interface IClockState {
+  counter: number;
+}
+
+export default class Clock extends React.Component<{}, IClockState> {
+
+  private timerID = null
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      time: new Date().toLocaleTimeString('en-GB')
-    };
+      counter: 0,
+    }
   }
 
-  componentDidMount() {
-    this.intervalID = setInterval(
-      () => this.tick(),
-      1000
-    );
+  public componentDidMount() {
+    this.timerID = window.setInterval(
+      () => this.updateCounter(),
+      1000,
+      )
   }
 
-  componentWillUnmount() {
-    clearInterval(this.intervalID);
-  }
+private updateCounter = () => {
+  this.setState({ counter: this.state.counter + 1 })
+}
 
-  tick() {
-    this.setState({
-      time: new Date().toLocaleTimeString('en-GB')
-    });
-  }
+private componentWillUnmount() {
+  window.clearInterval(this.timerID);
+}
 
-  render() {
+  public render() {
+
+    let dateNow = new Date();
+
     return (
-      <p>
-        Kello on {this.state.time}.
-      </p>
-    );
+      <div>
+        {`Tänään on ${dateNow.getHours()}.${dateNow.getMinutes()}.${dateNow.getSeconds()}.`}
+        {typeof window !== 'undefined' && window.toString()}
+      </div>
+      )
   }
 
 }

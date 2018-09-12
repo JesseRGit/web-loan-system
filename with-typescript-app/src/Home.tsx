@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 //import React1a from './components/React1a'
 //import React1b from './components/React1b'
+import ClockOLD from './components/ClockOLD'
 import Clock from './components/Clock'
 import Countries from './components/Countries'
 import Button from '@material-ui/core/Button'
@@ -16,7 +17,7 @@ return (
       <a>About</a>
     </Link>
 
-    <Clock />
+    <ClockOLD />
     <Clock />
     <Clock />
     <Clock />
