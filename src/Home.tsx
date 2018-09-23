@@ -8,6 +8,7 @@ import ClockOLD from './components/ClockOLD'
 import Clock from './components/Clock'
 import Countries from './components/Countries'
 import Button from '@material-ui/core/Button'
+import Countries2 from './components/React3a'
 
 const Home = () => {
 return (
@@ -30,7 +31,7 @@ return (
     <Clock />
     <Clock />
 
-    <Countries />
+    <Countries2 />
     <Button color="primary">Material UI Test Button</Button>
   </div>
 )
