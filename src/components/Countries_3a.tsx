@@ -7,12 +7,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import countries from '../countries';
+import Country from './Country';
 
 interface ICountriesState {
 }
 
 
-class Countries extends React.Component<{}, ICountriesState> {
+class Countries_3a extends React.Component<{}, ICountriesState> {
   public render() {
     return (
         <Paper>
@@ -35,21 +36,7 @@ class Countries extends React.Component<{}, ICountriesState> {
               </TableRow>
             </TableHead>
             <TableBody>
-              {countries.map(country =>
-                (<TableRow>
-                  <TableCell>
-                    {country.name}
-                  </TableCell>
-                  <TableCell>
-                    {country.population}
-                  </TableCell>
-                  <TableCell>
-                    {country.percentage}
-                  </TableCell>
-                  <TableCell>
-                    {country.position}
-                  </TableCell>
-                </TableRow>))}
+              {countries.map(country => <Country prop1={country} />)}
             </TableBody>
           </Table>
         </Paper>
@@ -57,4 +44,4 @@ class Countries extends React.Component<{}, ICountriesState> {
   };
 }
 
-export default Countries;
+export default Countries_3a;

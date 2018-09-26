@@ -1,18 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { withStyles } from '@material-ui/core/styles';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
-const maat:any[] = [
+const countries:any[] = [
   {"ID":"1067","name":"China","population":"1359821466","percentage":"19,66%","position":"1"},
   {"ID":"1068","name":"India","population":"1205624727","percentage":"17,43%","position":"2"},
   {"ID":"1069","name":"United States of America","population":"312237216","percentage":"4,51%","position":"3"},
@@ -45,45 +31,4 @@ const maat:any[] = [
   {"ID":"1096","name":"United Republic of Tanzania","population":"44973330","percentage":"0,65%","position":"30"}
 ];
 
-const Country = (props) => {
-  return (
-  <Card>
-    <CardContent>
-    <Typography>
-      Position: {props.countryInfo.position}
-    </Typography>
-      <Typography>
-        Country: {props.countryInfo.name}
-      </Typography>
-      <Typography>
-        Population: {props.countryInfo.population}
-      </Typography>
-    </CardContent>
-  </Card>
-  );
-}
-
-class Countries2 extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-  return (
-    <Paper>
-      <Table>
-        <TableBody>
-            {maat.map(maa => {
-              return (
-                <TableRow key={maa.id}>
-                  <Country countryInfo = {maa}/>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-      </Table>
-    </Paper>
-  );
-}
-};
-
-export default Countries2;
+export default countries;

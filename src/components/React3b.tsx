@@ -1,4 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import { withStyles } from '@material-ui/core/styles';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const maat:any[] = [
   {"ID":"1067","name":"China","population":"1359821466","percentage":"19,66%","position":"1"},
@@ -33,16 +44,55 @@ const maat:any[] = [
   {"ID":"1096","name":"United Republic of Tanzania","population":"44973330","percentage":"0,65%","position":"30"}
 ];
 
-const React1b: React.SFC<{prop1: string, prop2: number}> = () => {
-return (
-    <div>
-      {maat.map(maa => (
-        <div>
-          {`COUNTRY: ${maa.name}, POPULATION: ${maa.population}`}
-        </div>
-      ))}
-    </div>
-)
+var selectedCountries = [];
+
+function AddCountry(props) {
+  selectedCountries.push("turku");
+  console.log(selectedCountries);
+};
+
+var Country = (props) => {
+  return (
+  <Card>
+    <CardContent>
+    <CardActions>
+      <Button onClick={AddCountry.bind(props)}>Add country</Button>
+    </CardActions>
+    <Typography onClick="AddCountry(props)">
+      Position: {props.countryInfo.position}
+    </Typography>
+      <Typography>
+        Country: {props.countryInfo.name}
+      </Typography>
+      <Typography>
+        Population: {props.countryInfo.population}
+      </Typography>
+    </CardContent>
+  </Card>
+  );
 }
 
-export default React1b;
+class Countries3 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+  return (
+    <Paper>
+      <Table>
+        <TableBody>
+            {maat.map(maa => {
+              return (
+                <TableRow key={maa.id}>
+                  <Country countryInfo = {maa}/>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+      </Table>
+    </Paper>
+  );
+}
+};
+
+export default Countries3;
