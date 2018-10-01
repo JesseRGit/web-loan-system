@@ -4,16 +4,34 @@ import ReactDOM from 'react-dom';
 import Grid from '@material-ui/core/Grid';
 
 import Button from '@material-ui/core/Button'
-import MenuAppBar from './components/MenuAppBar'
+import ButtonAppBar from './components/ButtonAppBar'
 
 import Clock from './components/Clock'
 import Countries from './components/Countries'
 import Countries_3a from './components/Countries_3a'
+import RestApiDemo from './components/RestApiDemo'
 
 const Home: React.SFC<{prop1: string, prop2: number}> = () => {
   return (
     <div>
+      <div>
+        <ButtonAppBar />
+      </div>
+
+      <div>
+         Hello World.{' '}
+         <Link href="/about">
+           <a>About</a>
+         </Link>
+       </div>
+
+
       <div>Hello this is Home.tsx</div>
+      <br />
+      <br />
+
+      <div>This is RestApiDemo.tsx</div>
+      <RestApiDemo />
       <br />
       <br />
 
