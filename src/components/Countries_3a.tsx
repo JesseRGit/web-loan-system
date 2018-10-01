@@ -22,7 +22,7 @@ class Countries_3a extends React.Component<{}, ICountriesState> {
           <div>
             <ButtonAppBar />
           </div>
-          <h1>Countries</h1>
+          <h1>Countries_3a (using contry component)</h1>
           <Table>
             <TableHead>
               <TableRow>
