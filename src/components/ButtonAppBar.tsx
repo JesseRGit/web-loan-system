@@ -36,7 +36,7 @@ function ButtonAppBar(props) {
             Tasks
           </Typography>
 
-          <Link href="/about"><Button color="inherit">About</Button></Link>
+          <Link href="/about"><Button color="inherit">about.tsx</Button></Link>
           <Link href="/clock"><Button color="inherit">Clock.tsx</Button></Link>
           <Link href="/countries"><Button color="inherit">Countries.tsx</Button></Link>
           <Link href="/countries3a"><Button color="inherit">Countries_3a.tsx</Button></Link>

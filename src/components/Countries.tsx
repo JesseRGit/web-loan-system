@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 
 import countries from '../countries';
 
+import ButtonAppBar from './ButtonAppBar';
+
 interface ICountriesState {
 }
 
@@ -16,7 +18,10 @@ class Countries extends React.Component<{}, ICountriesState> {
   public render() {
     return (
         <Paper>
-          <h1>Countries</h1>
+          <div>
+            <ButtonAppBar />
+          </div>
+          <h1>Countries_3a</h1>
           <Table>
             <TableHead>
               <TableRow>

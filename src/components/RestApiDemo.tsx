@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ButtonAppBar from './ButtonAppBar';
+
 interface ICountriesState {
   data: any;
 }
@@ -25,6 +27,9 @@ class RestApiDemo extends React.Component<{}, ICountriesState> {
   public render() {
     return (
       <div>
+        <div>
+          <ButtonAppBar />
+        </div>
         <h1>RestApiDemo</h1>
         {this.state.data.map((item, index) => <div key={index}>{item.name}</div>)}
       </div>

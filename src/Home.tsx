@@ -16,33 +16,8 @@ const Home: React.SFC<{prop1: string, prop2: number}> = () => {
       <div>
         <ButtonAppBar />
       </div>
-
-      <div>
-         Hello World.{' '}
-         <Link href="/about">
-           <a>About</a>
-         </Link>
-       </div>
-
-
+      <br />
       <div>Hello this is Home.tsx</div>
-      <br />
-      <br />
-
-      <div>This is Material UI button test</div>
-      <Button color="primary">Test Material UI</Button>
-      <br />
-      <br />
-
-      <div>This is Countries_3a.tsx</div>
-      <Grid container={true}>
-        <Grid item={true}>
-        </Grid>
-        <Grid item={true}>
-          <Countries_3a />
-        </Grid>
-      </Grid>
-      <br />
       <br />
   </div>
   )
