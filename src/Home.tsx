@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 import ButtonAppBar from './components/ButtonAppBar'
 
-import Clock from './components/Clock'
 import Countries from './components/Countries'
 import Countries_3a from './components/Countries_3a'
 import RestApiDemo from './components/RestApiDemo'
@@ -30,29 +29,8 @@ const Home: React.SFC<{prop1: string, prop2: number}> = () => {
       <br />
       <br />
 
-      <div>This is RestApiDemo.tsx</div>
-      <RestApiDemo />
-      <br />
-      <br />
-
-      <div>This is Clock.tsx</div>
-      <Clock />
-      <br />
-      <br />
-
       <div>This is Material UI button test</div>
       <Button color="primary">Test Material UI</Button>
-      <br />
-      <br />
-
-      <div>This is Countries.tsx</div>
-      <Grid container={true}>
-        <Grid item={true}>
-        </Grid>
-        <Grid item={true}>
-          <Countries />
-        </Grid>
-      </Grid>
       <br />
       <br />
 

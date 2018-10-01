@@ -36,6 +36,7 @@ private componentWillUnmount() {
 
     return (
       <div>
+        <h1>Clock</h1>
         {`Tänään on ${dateNow.getHours()}.${dateNow.getMinutes()}.${dateNow.getSeconds()}.`}
         {typeof window !== 'undefined' && window.toString()}
       </div>

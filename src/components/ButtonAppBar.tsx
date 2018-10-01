@@ -36,10 +36,10 @@ function ButtonAppBar(props) {
             Tasks
           </Typography>
           <Link href="/about"><a> About </a></Link>
-          <Link href="/about"><a> Clock </a></Link>
-          <Link href="/about"><a> Countries </a></Link>
-          <Link href="/about"><a> Countries_3a </a></Link>
-          <Link href="/about"><a> RestApiDemo </a></Link>
+          <Link href="/clock"><a> Clock </a></Link>
+          <Link href="/countries"><a> Countries </a></Link>
+          <Link href="/countries3a"><a> Countries_3a </a></Link>
+          <Link href="/restapidemo"><a> RestApiDemo </a></Link>
         </Toolbar>
       </AppBar>
     </div>
