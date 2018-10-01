@@ -32,14 +32,15 @@ function ButtonAppBar(props) {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.grow}>
+          <Typography variant="title"  className={classes.grow}>
             Tasks
           </Typography>
-          <Link href="/about"><a> About </a></Link>
-          <Link href="/clock"><a> Clock </a></Link>
-          <Link href="/countries"><a> Countries </a></Link>
-          <Link href="/countries3a"><a> Countries_3a </a></Link>
-          <Link href="/restapidemo"><a> RestApiDemo </a></Link>
+
+          <Link href="/about"><Button color="inherit">About</Button></Link>
+          <Link href="/clock"><Button color="inherit">Clock.tsx</Button></Link>
+          <Link href="/countries"><Button color="inherit">Countries.tsx</Button></Link>
+          <Link href="/countries3a"><Button color="inherit">Countries_3a.tsx</Button></Link>
+          <Link href="/restapidemo"><Button color="inherit">RestApiDemo.tsx</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
