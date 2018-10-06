@@ -29,19 +29,12 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title"  className={classes.grow}>
-            Tasks
-          </Typography>
 
-          <Link href="/clock"><Button color="inherit">Clock.tsx</Button></Link>
-          <Link href="/countries"><Button color="inherit">Countries.tsx</Button></Link>
-          <Link href="/countries3a"><Button color="inherit">Countries_3a.tsx</Button></Link>
-          <Link href="/countries4b"><Button color="inherit">Countries_4a.tsx</Button></Link>
-          <Link href="/restapidemo"><Button color="inherit">RestApiDemo.tsx</Button></Link>
-          <Link href="/about"><Button color="inherit">about.tsx</Button></Link>
+          <Link href="/"><Button color="inherit">Home</Button></Link>
+          <Link href="/clock"><Button color="inherit">Clock</Button></Link>
+          <Link href="/countries3a"><Button color="inherit">Countries Local</Button></Link>
+          <Link href="/countries4b"><Button color="inherit">Countries Remote</Button></Link>
+          <Link href="/countriesinone"><Button color="inherit">Countries Combined</Button></Link>
 
         </Toolbar>
       </AppBar>

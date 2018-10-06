@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonAppBar from './ButtonAppBar';
 
 interface IClockState {
   counter: number;
@@ -37,12 +36,8 @@ private componentWillUnmount() {
 
     return (
       <div>
-      <div>
-        <ButtonAppBar />
-      </div>
         <h1>Clock</h1>
-        {`Tänään on ${dateNow.getHours()}.${dateNow.getMinutes()}.${dateNow.getSeconds()}.`}
-        {typeof window !== 'undefined' && window.toString()}
+        {`Kello on ${dateNow.getHours()}.${dateNow.getMinutes()}.${dateNow.getSeconds()}.`}
       </div>
       )
   }

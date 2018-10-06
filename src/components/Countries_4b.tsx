@@ -6,8 +6,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import ButtonAppBar from './ButtonAppBar';
-
 interface ICountriesState {
   data: any;
 }
@@ -32,10 +30,7 @@ class Countries_4b extends React.Component<{}, ICountriesState> {
   public render() {
     return (
         <Paper>
-          <div>
-            <ButtonAppBar />
-          </div>
-          <h1>Countries_4b (from API)</h1>
+          <h1>Countries_4b (remote)</h1>
           <Table>
             <TableHead>
               <TableRow>

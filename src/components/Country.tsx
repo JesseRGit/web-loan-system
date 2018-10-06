@@ -1,11 +1,17 @@
-import TableRow from '@material-ui/core/TableRow';
+import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 interface ICountryProp {
-  prop1?: object;
+  prop1?: {
+    name: string;
+    population: string;
+    percentage: string;
+    position: string;
+  };
 }
 
-const Country: React.SFC<ICountryProp> = ({ prop1 = {} }) => {
+const Country: React.SFC<ICountryProp> = ({ prop1 }) => {
   return (
       <TableRow>
         {console.log('DEBUG: ', prop1)}
@@ -24,5 +30,15 @@ const Country: React.SFC<ICountryProp> = ({ prop1 = {} }) => {
         </TableRow>
   )
 }
+
+Country.defaultProps = {
+  prop1: {
+    name: '',
+    population: '',
+    percentage: '',
+    position: '',
+  },
+}
+
 
 export default Country;
