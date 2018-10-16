@@ -7,12 +7,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
+import Router from 'next/router';
 
 interface ICountriesState {
   data: any;
 }
 
-class Countries_4b extends React.Component<{}, ICountriesState> {
+class CountryInfo extends React.Component<{}, ICountriesState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,50 +24,57 @@ class Countries_4b extends React.Component<{}, ICountriesState> {
     console.log('inside componentDidMount');
 
     const fetchedData = await fetch('https://restcountries.eu/rest/v2/all');
-
     const data = await fetchedData.json();
 
     console.log('data is here: ', data);
     this.setState({ data });
   }
   public render() {
+
+    const country_name = Router.query.country_name;
+    const countryData = this.state.data.filter(contry => contry.name === `${country_name}`);
+
     return (
         <Paper>
-          <h1>Countries_4b (remote)</h1>
-          <div>To get more info on specific country press it's name</div>
+        <Link href="/countries4b"><Button color="inherit">Back</Button></Link>
+          <h1>{country_name}</h1>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Name
-                </TableCell>
-                <TableCell>
-                  Population
+                  Native name
                 </TableCell>
                 <TableCell>
                   Capital
                 </TableCell>
                 <TableCell>
+                  Population
+                </TableCell>
+                <TableCell>
                   Region
+                </TableCell>
+                <TableCell>
+                  Subregion
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.data.map((item, index, population, capital, region) =>
+              {countryData.map((item, index, capital, population, region, subregion) =>
                 (<TableRow>
                   <TableCell key={index}>
-                    <Link href={{ pathname: '/country_info', query: { country_name: `${item.name}` } }}>
-                      <Button color="inherit">{item.name}</Button>
-                    </Link>
-                  </TableCell>
-                  <TableCell key={population}>
-                    {item.population}
+                    {item.nativeName}
                   </TableCell>
                   <TableCell key={capital}>
                     {item.capital}
                   </TableCell>
+                  <TableCell key={population}>
+                    {item.population}
+                  </TableCell>
                   <TableCell key={region}>
                     {item.region}
+                  </TableCell>
+                  <TableCell key={subregion}>
+                    {item.subregion}
                   </TableCell>
                 </TableRow>))}
             </TableBody>
@@ -76,4 +84,4 @@ class Countries_4b extends React.Component<{}, ICountriesState> {
   };
 }
 
-export default Countries_4b;
+export default CountryInfo;
