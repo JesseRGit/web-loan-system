@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import Link from 'next/link';
+import SwipeableTemporaryDrawer from './SideNav'
 
 const styles = {
   root: {
@@ -29,13 +30,12 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-
-          <Link href="/"><Button color="inherit">Home</Button></Link>
+          <SwipeableTemporaryDrawer />
+          <Link href="/"><Button color="inherit">Lainausjärjestelmä</Button></Link>
           <Link href="/clock"><Button color="inherit">Clock</Button></Link>
           <Link href="/countries3a"><Button color="inherit">Countries Local</Button></Link>
           <Link href="/countries4b"><Button color="inherit">Countries Remote</Button></Link>
           <Link href="/countriesinone"><Button color="inherit">Countries Combined</Button></Link>
-
         </Toolbar>
       </AppBar>
     </div>

@@ -9,9 +9,9 @@ const Home: React.SFC<{prop1: string, prop2: number}> = () => {
       <div>
         <ButtonAppBar />
       </div>
-      <h1>Home</h1>
+      <h1>Hello!</h1>
       <br />
-      <div>Hello this is Home.tsx</div>
+      <div>Welcome!</div>
       <br />
   </div>
   )
