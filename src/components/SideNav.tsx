@@ -11,6 +11,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import Link from 'next/link';
+
+
 const styles = {
   list: {
     width: 250,
@@ -40,16 +43,42 @@ class SwipeableTemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Home', 'Equipments', 'Users', 'Loans'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <ListItem key="home">
+            <Link href="/">
+                <Button color="inherit">
+                  <ListItemIcon><InboxIcon /></ListItemIcon>
+                  <ListItemText primary="home" />
+                </Button>
+              </Link>
+          </ListItem>
+            <ListItem key="equipments">
+              <Link href="/equipments">
+                  <Button color="inherit">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="equipments" />
+                  </Button>
+                </Link>
             </ListItem>
-          ))}
+            <ListItem key="loans">
+              <Link href="/loans">
+                  <Button color="inherit">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="loans" />
+                  </Button>
+                </Link>
+            </ListItem>
+            <ListItem key="users">
+              <Link href="/users">
+                  <Button color="inherit">
+                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemText primary="users" />
+                  </Button>
+                </Link>
+            </ListItem>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Change user', 'Logout'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -62,7 +91,7 @@ class SwipeableTemporaryDrawer extends React.Component {
     const fullList = (
       <div className={classes.fullList}>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Home', 'Equipments', 'Users', 'Loans'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -71,7 +100,7 @@ class SwipeableTemporaryDrawer extends React.Component {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Change user', 'Logout'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
