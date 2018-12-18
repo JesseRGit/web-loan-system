@@ -6,10 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-//import countries from '../countries';
-//import Country from './Country';
-
-import equipments from '../TestData';
+import equipments from '../equipments';
 import Equipment from './Equipment';
 
 class ShowEquipments extends React.Component<{}, IEquipmentsState> {
