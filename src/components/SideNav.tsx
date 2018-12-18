@@ -10,6 +10,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import ListIcon from '@material-ui/icons/List';
+import HomeIcon from '@material-ui/icons/Home';
+import ComputerIcon from '@material-ui/icons/Computer';
+import FaceIcon from '@material-ui/icons/Face';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 import Link from 'next/link';
 
@@ -46,7 +51,7 @@ class SwipeableTemporaryDrawer extends React.Component {
           <ListItem key="home">
             <Link href="/">
                 <Button color="inherit">
-                  <ListItemIcon><InboxIcon /></ListItemIcon>
+                  <ListItemIcon><HomeIcon /></ListItemIcon>
                   <ListItemText primary="home" />
                 </Button>
               </Link>
@@ -54,7 +59,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="equipments">
               <Link href="/equipments">
                   <Button color="inherit">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemIcon><ComputerIcon /></ListItemIcon>
                     <ListItemText primary="equipments" />
                   </Button>
                 </Link>
@@ -62,7 +67,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="loans">
               <Link href="/loans">
                   <Button color="inherit">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemIcon><ArrowRightAltIcon /></ListItemIcon>
                     <ListItemText primary="loans" />
                   </Button>
                 </Link>
@@ -70,7 +75,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="users">
               <Link href="/users">
                   <Button color="inherit">
-                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                    <ListItemIcon><FaceIcon /></ListItemIcon>
                     <ListItemText primary="users" />
                   </Button>
                 </Link>
@@ -112,7 +117,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.toggleDrawer('left', true)}>Side bar</Button>
+        <Button onClick={this.toggleDrawer('left', true)}><ListItemIcon><ListIcon /></ListItemIcon></Button>
         <SwipeableDrawer
           open={this.state.left}
           onClose={this.toggleDrawer('left', false)}
