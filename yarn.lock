@@ -3526,6 +3526,11 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
+namor@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/namor/-/namor-1.1.1.tgz#989b964c80094caece8adccac3c7f5de742b4034"
+  integrity sha512-mFYVwBF5ENt96DAdYzNrFTvdNv+F57HSjH1KEfKUQlyHEW09F9A767m36wTdXtFErG6LXq6GcyXMNnZCUS2m9w==
+
 nan@^2.9.2:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.0.tgz#574e360e4d954ab16966ec102c0c049fd961a099"
