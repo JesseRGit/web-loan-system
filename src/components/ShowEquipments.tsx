@@ -1,15 +1,6 @@
 import React from 'react';
-
-// Import React Table
 import ReactTable from 'react-table';
-//import 'react-table/react-table.css';
-
-const data = [
-  { id: '001', name: 'Tablet', description: 'Very good tablet.' },
-  { id: '002', name: 'Phone', description: 'Not so good Android.' },
-  { id: '003', name: 'Phablet', description: 'Too expensive phablet.' },
-  { id: '004', name: 'Laptop', description: 'Good laptop.' }
-]
+import equipments from '../equipments';
 
 const columns = [
 { Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
@@ -33,10 +24,10 @@ class ShowEquipments extends React.Component <{}, IEquipmentsState> {
       <div>
         <ReactTable
         columns={columns}
-        data={data}
+        data={equipments}
         filterable
         defaultPageSize={25}
-        noDataText={"Please Wait..."}
+        noDataText={"No data..."}
         showPagination={false}
         >
         </ReactTable>

@@ -1,49 +1,42 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
+import ReactTable from 'react-table';
 import loans from '../loans';
-import Loan from './Loan';
 
-class ShowLoans extends React.Component<{}, ILoansState> {
-  public render() {
+const columns = [
+{ Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
+{ Header: "Equipment Id", accessor: "equipmentId", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
+{ Header: "User Id", accessor: "userId", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
+{ Header: "Begins", accessor: "begins", style:{ textAlign: "Right" } },
+{ Header: "Ends", accessor: "ends", style:{ textAlign: "Right" } },
+{ Header: "Returned", accessor: "returned", style:{ textAlign: "Right" } },
+{ Header: "Actions", filterable: false, Cell: props =>{ return(<button className="">Delete</button>)}}]
+
+interface ILoansState {
+  data: any;
+}
+
+class ShowLoans extends React.Component <{}, ILoansState> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: ['testitem'],
+    }
+  }
+   public render() {
     return (
-        <Paper>
-          <h1>Loans</h1>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  Id
-                </TableCell>
-                <TableCell>
-                  EquipmentId
-                </TableCell>
-                <TableCell>
-                  UserId
-                </TableCell>
-                <TableCell>
-                  Begins
-                </TableCell>
-                <TableCell>
-                  Ends
-                </TableCell>
-                <TableCell>
-                  Returned
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {loans.map(loan => <Loan prop1={loan} />)}
-            </TableBody>
-          </Table>
-        </Paper>
-    )
-  };
+      <div>
+        <ReactTable
+        columns={columns}
+        data={loans}
+        filterable
+        defaultPageSize={25}
+        noDataText={"No data..."}
+        showPagination={false}
+        >
+        </ReactTable>
+      </div>
+    );
+  }
 }
 
 export default ShowLoans;
