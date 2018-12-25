@@ -3,6 +3,7 @@ import ReactTable from 'react-table';
 import users from '../users';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
+import matchSorter from 'match-sorter';
 
 interface IUsersState {
   data: any;
@@ -25,37 +26,58 @@ class ShowUsers extends React.Component <{}, IUsersState> {
     this.setState(users)
   }
 
-   public render() {
-     const columns = [
-     { Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
-     { Header: "Name", accessor: "name" },
-     { Header: "Email", accessor: "email" },
-     { Header: "Actions", filterable: false,
-       style:{ textAlign: "Right" }, width:100,
-       minWidth: 100, maxWidth: 100, Cell: props =>{
-         return(
-           <button onClick={() =>{
-             //console.log("props", props)
-             this.deleteRow(props.original.id);
-           }}
-           >
-            <Icon><DeleteIcon /></Icon>
-           </button>
-         )}}]
-    return (
-      <div>
-        <ReactTable
-        columns={columns}
-        data={users}
-        filterable
-        defaultPageSize={25}
-        noDataText={"No data..."}
-        showPagination={false}
-        >
-        </ReactTable>
-      </div>
-    );
-  }
-}
+  public render() {
+    const columns = [
+      { Header: "Id",
+      id: "id",
+      accessor: d => d.id,
+      style:{ textAlign: "Right" },
+      width:100, minWidth: 100,
+      maxWidth: 100,
+      filterMethod: (filter, rows) =>
+      matchSorter(rows, filter.value,
+        { keys: ["id"] }),
+        filterAll: true
+      },
+      { Header: "Name",
+      id: "name",
+      accessor: d => d.name,
+      filterMethod: (filter, rows) =>
+      matchSorter(rows, filter.value,
+        { keys: ["name"] }),
+        filterAll: true
+      },
+      { Header: "Email",
+      id: "email",
+      accessor: d => d.email,
+      filterMethod: (filter, rows) =>
+      matchSorter(rows, filter.value,
+        { keys: ["email"] }),
+        filterAll: true
+      },
+      { Header: "Actions", filterable: false,
+      style:{ textAlign: "Right" }, width:100,
+      minWidth: 100, maxWidth: 100, Cell: props =>{
+        return(
+          <button onClick={() =>{ this.deleteRow(props.original.id); }}>
+          <Icon><DeleteIcon /></Icon>
+          </button>
+        )}}]
 
-export default ShowUsers;
+        return (
+          <div>
+          <ReactTable
+          columns={columns}
+          data={users}
+          filterable
+          defaultPageSize={25}
+          noDataText={"No data..."}
+          showPagination={false}
+          >
+          </ReactTable>
+          </div>
+        );
+      }
+    }
+
+    export default ShowUsers;
