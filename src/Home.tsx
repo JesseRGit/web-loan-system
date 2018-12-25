@@ -1,3 +1,13 @@
+/*React-table fix copypaste:
+{test: /.jsx$/ , loader:'babel-loader', exclude: '/node_modules/'}
+@zeit/next-css/index.js sisälle
+
+config.module.rules.push({
+  test: /\.css$/,
+  use: options.defaultLoaders.css
+})
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -5,7 +15,6 @@ import ButtonAppBar from './components/ButtonAppBar';
 
 const Home: React.SFC<{prop1: string, prop2: number}> = () => {
   return (
-    //<link rel='stylesheet' href='/_next/static/style.css' />
     <div>
       <div>
         <ButtonAppBar />

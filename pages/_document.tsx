@@ -21,7 +21,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            href="https://unpkg.com/react-table@latest/react-table.css"
           />
         </Head>
         <body>
