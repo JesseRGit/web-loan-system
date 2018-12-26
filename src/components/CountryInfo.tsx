@@ -17,7 +17,7 @@ class CountryInfo extends React.Component<{}, ICountriesState> {
   constructor(props) {
     super(props)
     this.state = {
-      data: ['testitem'],
+      data: {},
     }
   }
   public async componentDidMount() {

@@ -3,6 +3,8 @@ import ReactTable from 'react-table';
 import users from '../users';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 import matchSorter from 'match-sorter';
 
 interface IUsersState {
@@ -22,9 +24,29 @@ class ShowUsers extends React.Component <{}, IUsersState> {
     const index = users.findIndex(user =>{
       return user.id === id
     })
-    users.splice(index, 1)
+    if (window.confirm("Delete user?")) {
+      users.splice(index, 1)
+      this.setState(users)
+  }
+}
+
+editRow(id){
+  //const users = [...this.state.users];
+  //console.log("id", id)
+  const index = users.findIndex(user =>{
+    return user.id === id
+  })
+  if (window.confirm("Accept edit?")) {
+    console.log("info", index)
+    users[index] = { id: '100', name: 'Supa', email: 'Fast supa.' };
     this.setState(users)
   }
+}
+/*
+let ids = [...this.state.ids];     // create the copy of state array
+ids[index] = 'k';                  //new value
+this.setState({ ids });            //update the value
+*/
 
   public render() {
     const columns = [
@@ -59,9 +81,14 @@ class ShowUsers extends React.Component <{}, IUsersState> {
       style:{ textAlign: "Right" }, width:100,
       minWidth: 100, maxWidth: 100, Cell: props =>{
         return(
-          <button onClick={() =>{ this.deleteRow(props.original.id); }}>
-          <Icon><DeleteIcon /></Icon>
-          </button>
+          <div>
+            <button onClick={() =>{ this.editRow(props.original.id); }}>
+              <Icon><EditIcon /></Icon>
+            </button>
+            <button onClick={() =>{ this.deleteRow(props.original.id); }}>
+              <Icon><DeleteIcon /></Icon>
+            </button>
+          </div>
         )}}]
 
         return (
@@ -72,7 +99,8 @@ class ShowUsers extends React.Component <{}, IUsersState> {
           filterable
           defaultPageSize={25}
           noDataText={"No data..."}
-          showPagination={false}
+          showPaginationTop
+          showPaginationBottom={false}
           >
           </ReactTable>
           </div>
