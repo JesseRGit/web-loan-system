@@ -52,7 +52,7 @@ class Countries_4b extends React.Component<{}, ICountriesState> {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.state.data.map((item, index, population, capital, region) =>
+              {this.state.data.map((item, index, population, capital, region) => {
                 (<TableRow>
                   <TableCell key={index}>
                     <Link href={{ pathname: '/country_info', query: { country_name: `${item.name}` } }}>
@@ -68,12 +68,14 @@ class Countries_4b extends React.Component<{}, ICountriesState> {
                   <TableCell key={region}>
                     {item.region}
                   </TableCell>
-                </TableRow>))}
+                </TableRow>
+              )
+            })}
             </TableBody>
           </Table>
         </Paper>
-    )
-  };
+    );
+  }
 }
 
 export default Countries_4b;

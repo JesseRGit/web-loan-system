@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import users from '../users';
+import { users } from '../data';
 import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';

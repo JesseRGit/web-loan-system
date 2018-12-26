@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import equipments from '../equipments';
+//import equipments from '../equipments';
+import { equipments } from '../data';
 
 const columns = [
 { Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
@@ -9,14 +10,14 @@ const columns = [
 { Header: "Actions", filterable: false, Cell: props =>{ return(<button className="">Delete</button>)}}]
 
 interface IEquipmentsState {
-  data: any;
+  equipments: any;
 }
 
 class ShowEquipments extends React.Component <{}, IEquipmentsState> {
   constructor(props) {
     super(props)
     this.state = {
-      data: ['testitem'],
+      equipments: ['testitem'],
     }
   }
    public render() {

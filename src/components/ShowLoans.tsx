@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import loans from '../loans';
+import { loans } from '../data';
 
 const columns = [
 { Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },

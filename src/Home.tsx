@@ -1,3 +1,4 @@
+//kirjoitettu muistiin
 /*React-table fix copypaste:
 {test: /.jsx$/ , loader:'babel-loader', exclude: '/node_modules/'}
 @zeit/next-css/index.js sisälle
@@ -7,6 +8,9 @@ config.module.rules.push({
   use: options.defaultLoaders.css
 })
 */
+
+//Jäin editointi ominaisuuden tekemiseen ShowUserdataan ja TestBoyn finishaamiseen
+//Korjaa sidenavin button
 
 import React from 'react';
 import ReactDOM from 'react-dom';

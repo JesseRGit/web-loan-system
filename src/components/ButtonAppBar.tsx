@@ -32,6 +32,7 @@ function ButtonAppBar(props) {
         <Toolbar>
           <SwipeableTemporaryDrawer />
           <Link href="/"><Button color="inherit"><h1>Loan System</h1></Button></Link>
+          <Link href="/testboy"><Button color="inherit">TESTBOY</Button></Link>
           <Link href="/clock"><Button color="inherit">Clock</Button></Link>
           <Link href="/countries3a"><Button color="inherit">Countries Local</Button></Link>
           <Link href="/countries4b"><Button color="inherit">Countries Remote</Button></Link>

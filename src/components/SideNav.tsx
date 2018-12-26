@@ -117,7 +117,12 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.toggleDrawer('left', true)}><ListItemIcon><ListIcon /></ListItemIcon></Button>
+        <Button style={{maxWidth: '85px', maxHeight: '85px', minWidth: '85px', minHeight: '85px', alignText: "left"}}
+          onClick={this.toggleDrawer('left', true)}>
+            <ListItemIcon>
+              <ListIcon />
+            </ListItemIcon>
+        </Button>
         <SwipeableDrawer
           open={this.state.left}
           onClose={this.toggleDrawer('left', false)}
