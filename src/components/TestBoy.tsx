@@ -28,7 +28,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
     })
     if (window.confirm("Delete user?")) {
       users.splice(index, 1)
-      this.setState(users)
+      this.setState({ users })
   }
 }
 
@@ -41,7 +41,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
         onBlur={e => {
           const data = [...this.state.data];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          this.setState({ data });
+          //this.setState({ data });
         }}
         dangerouslySetInnerHTML={{
           __html: this.state.data[cellInfo.index][cellInfo.column.id]
@@ -51,6 +51,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
   }
 
   public render() {
+    console.log("Users now", users);
     const { data } = this.state;
     return (
       <div>
@@ -61,13 +62,13 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             Header: "Id",
             id: "id",
             accessor: d => d.id,
-            style:{ textAlign: "Right" },
             width:100, minWidth: 100,
             maxWidth: 100,
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
               { keys: ["id"] }),
-              filterAll: true
+            filterAll: true,
+            Cell: this.renderEditable
             },
             {
             Header: "Name",
@@ -76,7 +77,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
               { keys: ["name"] }),
-              filterAll: true,
+            filterAll: true,
             Cell: this.renderEditable
             },
             {
@@ -86,7 +87,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
               { keys: ["email"] }),
-              filterAll: true,
+            filterAll: true,
             Cell: this.renderEditable
           },
           {
@@ -105,7 +106,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
           noDataText={"No data..."}
           showPaginationTop
           showPaginationBottom={false}
-          //className="-striped -highlight"
+          className="-highlight"
         />
       </div>
     );
