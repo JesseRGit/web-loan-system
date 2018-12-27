@@ -1,49 +1,45 @@
-import React from 'react';
-import ReactTable from 'react-table';
+import React from "react";
+import { render } from "react-dom";
+import ReactTable from "react-table";
 import { users } from '../data';
+import matchSorter from 'match-sorter';
 import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
-import matchSorter from 'match-sorter';
+import Button from '@material-ui/core/Button';
 
 interface IUsersState {
   data: any;
 }
 
-class ShowUsers extends React.Component <{}, IUsersState> {
-  constructor(props) {
-    super(props);
+class ShowUsers extends React.Component<{}, IUsersState> {
+  constructor() {
+    super();
     this.state = {
-      users: { users }
+      data: users
     };
+    this.renderEditable = this.renderEditable.bind(this);
   }
 
   deleteRow(id){
-    //console.log("id", id)
     const index = users.findIndex(user =>{
       return user.id === id
     })
     if (window.confirm("Delete user?")) {
       users.splice(index, 1)
-      this.setState(users)
+      this.setState({ users })
   }
 }
 
-editRow(id){
-  //const users = [...this.state.users];
-  //console.log("id", id)
-  const index = users.findIndex(user =>{
-    return user.id === id
-  })
-  if (window.confirm("Accept edit?")) {
-    console.log("info", index)
-    users[index] = { id: '100', name: 'Supa', email: 'Fast supa.' };
-    this.setState(users)
-  }
+addRow() {
+    const newData = { id: 'INSERT ID', name: 'INSERT NAME', email: 'INSERT EMAIL@example.com' };
+    users.push(newData);
+    this.setState({ users })
 }
 
-renderEditable(cellInfo) {
+  renderEditable(cellInfo) {
     return (
       <div
         style={{ backgroundColor: "#fafafa" }}
@@ -52,7 +48,6 @@ renderEditable(cellInfo) {
         onBlur={e => {
           const data = [...this.state.data];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          this.setState({ data });
         }}
         dangerouslySetInnerHTML={{
           __html: this.state.data[cellInfo.index][cellInfo.column.id]
@@ -62,63 +57,67 @@ renderEditable(cellInfo) {
   }
 
   public render() {
-    const columns = [
-      { Header: "Id",
-      id: "id",
-      accessor: d => d.id,
-      style:{ textAlign: "Right" },
-      width:100, minWidth: 100,
-      maxWidth: 100,
-      filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value,
-        { keys: ["id"] }),
-        filterAll: true,
-      },
-      { Header: "Name",
-      id: "name",
-      accessor: d => d.name,
-      filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value,
-        { keys: ["name"] }),
-        filterAll: true
-      },
-      { Header: "Email",
-      id: "email",
-      accessor: d => d.email,
-      filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value,
-        { keys: ["email"] }),
-        filterAll: true
-      },
-      { Header: "Actions", filterable: false,
-      style:{ textAlign: "Right" }, width:100,
-      minWidth: 100, maxWidth: 100, Cell: props =>{
-        return(
-          <div>
-            <button onClick={() =>{ this.editRow(props.original.id); }}>
-              <Icon><EditIcon /></Icon>
-            </button>
-            <button onClick={() =>{ this.deleteRow(props.original.id); }}>
-              <Icon><DeleteIcon /></Icon>
-            </button>
-          </div>
-        )}}]
-
-        return (
-          <div>
-          <ReactTable
-          columns={columns}
-          data={users}
+    const { data } = this.state;
+    return (
+      <div>
+        <Button onClick={() =>{ this.addRow(); }}>
+          <Icon><AddIcon /></Icon> Add user
+        </Button>
+        <ReactTable
+          data={data}
+          columns={[
+            {
+            Header: "Id",
+            id: "id",
+            accessor: d => d.id,
+            width:100, minWidth: 100,
+            maxWidth: 100,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["id"] }),
+            filterAll: true,
+            Cell: this.renderEditable
+            },
+            {
+            Header: "Name",
+            id: "name",
+            accessor: d => d.name,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["name"] }),
+            filterAll: true,
+            Cell: this.renderEditable
+            },
+            {
+            Header: "Email",
+            id: "email",
+            accessor: d => d.email,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["email"] }),
+            filterAll: true,
+            Cell: this.renderEditable
+          },
+          {
+          sortable: false,
+          filterable: false,
+          style:{ textAlign: "Center" }, width:50,
+          minWidth: 50, maxWidth: 50,
+          Cell: props =>{
+            return(
+              <IconButton style={{ maxWidth: '50px', minWidth: '50px', maxHeight: '50px', maxHeight: '50px' }}
+                          onClick={() =>{ this.deleteRow(props.original.id); }}>
+                <DeleteIcon size="small"/>
+              </IconButton>
+            )}}
+          ]}
+          defaultPageSize={10}
           filterable
-          defaultPageSize={25}
           noDataText={"No data..."}
-          showPaginationTop
-          showPaginationBottom={false}
-          >
-          </ReactTable>
-          </div>
-        );
-      }
-    }
-
-    export default ShowUsers;
+          className="-highlight"
+        />
+      </div>
+    );
+  }
+}
+export default ShowUsers;

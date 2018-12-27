@@ -1,42 +1,154 @@
-import React from 'react';
-import ReactTable from 'react-table';
+import React from "react";
+import { render } from "react-dom";
+import ReactTable from "react-table";
 import { loans } from '../data';
-
-const columns = [
-{ Header: "Id", accessor: "id", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
-{ Header: "Equipment Id", accessor: "equipmentId", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
-{ Header: "User Id", accessor: "userId", style:{ textAlign: "Right" }, width:100, minWidth: 100, maxWidth: 100 },
-{ Header: "Begins", accessor: "begins", style:{ textAlign: "Right" } },
-{ Header: "Ends", accessor: "ends", style:{ textAlign: "Right" } },
-{ Header: "Returned", accessor: "returned", style:{ textAlign: "Right" } },
-{ Header: "Actions", filterable: false, Cell: props =>{ return(<button className="">Delete</button>)}}]
+import matchSorter from 'match-sorter';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 
 interface ILoansState {
   data: any;
 }
 
 class ShowLoans extends React.Component <{}, ILoansState> {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super();
     this.state = {
-      data: ['testitem'],
-    }
+      data: loans
+    };
+    this.renderEditable = this.renderEditable.bind(this);
   }
-   public render() {
-    return (
-      <div>
-        <ReactTable
-        columns={columns}
-        data={loans}
+
+  deleteRow(id){
+    const index = loans.findIndex(loan =>{
+      return loan.id === id
+    })
+    if (window.confirm("Remove loan?")) {
+      loans.splice(index, 1)
+      this.setState({ loans })
+  }
+}
+
+addRow() {
+    const newData = { id: 'INSERT ID', equipmentId: 'INSERT EQUIPMENT ID', userId: 'INSERT USER ID', begins: 'INSERT START DATE', ends: 'INSERT END DATE', returned: null };
+    loans.push(newData);
+    this.setState({ loans })
+}
+
+renderEditable(cellInfo) {
+  return (
+    <div
+      style={{ backgroundColor: "#fafafa" }}
+      contentEditable
+      suppressContentEditableWarning
+      onBlur={e => {
+        const data = [...this.state.data];
+        data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+      }}
+      dangerouslySetInnerHTML={{
+        __html: this.state.data[cellInfo.index][cellInfo.column.id]
+      }}
+    />
+  );
+}
+
+public render() {
+  const { data } = this.state;
+  return (
+    <div>
+      <Button onClick={() =>{ this.addRow(); }}>
+        <Icon><AddIcon /></Icon> Add user
+      </Button>
+      <ReactTable
+        data={data}
+        columns={[
+          {
+          Header: "Id",
+          id: "id",
+          accessor: d => d.id,
+          width:100, minWidth: 100,
+          maxWidth: 100,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["id"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+          {
+          Header: "Device Id",
+          id: "deviceId",
+          accessor: d => d.deviceId,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["deviceId"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+          {
+          Header: "User Id",
+          id: "userId",
+          accessor: d => d.userId,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["userId"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+          {
+          Header: "Begins",
+          id: "begins",
+          accessor: d => d.begins,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["begins"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+          {
+          Header: "Ends",
+          id: "ends",
+          accessor: d => d.ends,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["ends"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+          {
+          Header: "Returned",
+          id: "returned",
+          accessor: d => d.returned,
+          filterMethod: (filter, rows) =>
+          matchSorter(rows, filter.value,
+            { keys: ["returned"] }),
+          filterAll: true,
+          Cell: this.renderEditable
+          },
+        {
+        sortable: false,
+        filterable: false,
+        style:{ textAlign: "Center" }, width:50,
+        minWidth: 50, maxWidth: 50,
+        Cell: props =>{
+          return(
+            <IconButton style={{ maxWidth: '50px', minWidth: '50px', maxHeight: '50px', maxHeight: '50px' }}
+                        onClick={() =>{ this.deleteRow(props.original.id); }}>
+              <DeleteIcon size="small"/>
+            </IconButton>
+          )}}
+        ]}
+        defaultPageSize={10}
         filterable
-        defaultPageSize={25}
         noDataText={"No data..."}
-        showPagination={false}
-        >
-        </ReactTable>
-      </div>
-    );
-  }
+        className="-highlight"
+      />
+    </div>
+  );
+}
 }
 
 export default ShowLoans;
