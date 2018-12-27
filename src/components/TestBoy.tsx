@@ -67,8 +67,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
               { keys: ["id"] }),
-              filterAll: true,
-            Cell: this.renderEditable
+              filterAll: true
             },
             {
             Header: "Name",
@@ -91,17 +90,17 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             Cell: this.renderEditable
           },
           {
-          Header: "Actions",
+          Header: "Delete",
           filterable: false,
-          style:{ textAlign: "Right" }, width:100,
-          minWidth: 100, maxWidth: 100, Cell: props =>{
+          style:{ textAlign: "Center" }, width:70,
+          minWidth: 70, maxWidth: 70, Cell: props =>{
             return(
                 <button onClick={() =>{ this.deleteRow(props.original.id); }}>
                   <Icon><DeleteIcon /></Icon>
                 </button>
             )}}
           ]}
-          defaultPageSize={10}
+          defaultPageSize={25}
           filterable
           noDataText={"No data..."}
           showPaginationTop
