@@ -1,8 +1,8 @@
 import AutoGrid from '../src/components/CountriesInOne'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <AutoGrid />
 </div>

@@ -1,9 +1,9 @@
-import ButtonAppBar from '../src/components/ButtonAppBar'
+import TopNav from '../src/components/TopNav'
 
 export default () =>
 <div>
   <div>
-    <ButtonAppBar />
+    <TopNav />
   </div>
   <h1>About</h1>
   About us!

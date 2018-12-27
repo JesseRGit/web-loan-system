@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Icon from '@material-ui/core/Icon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
@@ -117,11 +118,11 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Button style={{maxWidth: '85px', maxHeight: '85px', minWidth: '85px', minHeight: '85px', alignText: "left"}}
+        <Button style={{ size: 'large', fullWidth: true, maxWidth: '85px', maxHeight: '85px', minWidth: '85px', minHeight: '85px' }}
           onClick={this.toggleDrawer('left', true)}>
-            <ListItemIcon>
-              <ListIcon />
-            </ListItemIcon>
+            <Icon>
+              <ListIcon fontSize="large" />
+            </Icon>
         </Button>
         <SwipeableDrawer
           open={this.state.left}

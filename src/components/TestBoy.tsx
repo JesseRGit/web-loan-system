@@ -11,14 +11,14 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
 const materials = [
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' },
-  { qty: '', desc: '', price: '' }
+  { qty: '1', desc: '312', price: '332323' },
+  { qty: '2', desc: '3123', price: '3213' },
+  { qty: '3', desc: '3232', price: '21312' },
+  { qty: '4', desc: '3232', price: '3123' },
+  { qty: '5', desc: '123', price: '22132' },
+  { qty: '6', desc: '33221', price: '333' },
+  { qty: '7', desc: '323', price: '3232' },
+  { qty: '9', desc: '12312', price: '33232' }
 ]
 
 interface ITestBoyState {
@@ -31,6 +31,7 @@ class TestBoy extends React.Component<{}, ITestBoyState> {
     this.state = {
       materials: ['testitem'],
     }
+    console.log("Materials at constructor:", this.materials)
   }
 
   handleChange(index, dataType, value) {

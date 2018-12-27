@@ -15,13 +15,13 @@ config.module.rules.push({
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ButtonAppBar from './components/ButtonAppBar';
+import TopNav from './components/TopNav';
 
 const Home: React.SFC<{prop1: string, prop2: number}> = () => {
   return (
     <div>
       <div>
-        <ButtonAppBar />
+        <TopNav />
       </div>
       <h1>Home</h1>
       <br />

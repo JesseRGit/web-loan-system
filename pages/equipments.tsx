@@ -1,8 +1,8 @@
 import ShowEquipments from '../src/components/ShowEquipments'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <ShowEquipments />
 </div>

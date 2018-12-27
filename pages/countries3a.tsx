@@ -1,8 +1,8 @@
 import Countries_3a from '../src/components/Countries_3a'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <Countries_3a />
 </div>

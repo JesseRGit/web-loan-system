@@ -1,8 +1,8 @@
 import ShowLoans from '../src/components/ShowLoans'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <ShowLoans />
 </div>

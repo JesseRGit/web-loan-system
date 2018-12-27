@@ -1,8 +1,8 @@
 import Clock from '../src/components/Clock'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <Clock />
 </div>

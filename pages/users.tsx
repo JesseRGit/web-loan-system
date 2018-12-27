@@ -1,8 +1,8 @@
 import ShowUsers from '../src/components/ShowUsers'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <ShowUsers />
 </div>

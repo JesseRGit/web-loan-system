@@ -1,8 +1,8 @@
 import CountryInfo from '../src/components/CountryInfo'
-import ButtonAppBar from '../src/components/ButtonAppBar';
+import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
-  <ButtonAppBar />
+  <TopNav />
   <CountryInfo />
 </div>
