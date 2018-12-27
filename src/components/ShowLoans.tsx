@@ -34,7 +34,7 @@ class ShowLoans extends React.Component <{}, ILoansState> {
 }
 
 addRow() {
-    const newData = { id: 'INSERT ID', equipmentId: 'INSERT EQUIPMENT ID', userId: 'INSERT USER ID', begins: 'INSERT START DATE', ends: 'INSERT END DATE', returned: null };
+    const newData = { id: 'INSERT ID', equipmentId: 'INSERT EQUIPMENT ID', userId: 'INSERT USER ID', begins: 'INSERT START DATE', ends: 'INSERT END DATE', returned: "INSERT IF RETURNED ALREADY" };
     loans.push(newData);
     this.setState({ loans })
 }
@@ -129,6 +129,7 @@ public render() {
           Cell: this.renderEditable
           },
         {
+        //Delete icon
         sortable: false,
         filterable: false,
         style:{ textAlign: "Center" }, width:50,
