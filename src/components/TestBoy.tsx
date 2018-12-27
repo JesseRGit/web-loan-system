@@ -7,6 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 
 interface IUsersState {
   data: any;
@@ -32,6 +33,12 @@ class ShowUsers extends React.Component<{}, IUsersState> {
   }
 }
 
+addRow() {
+    const newData = { id: 'INSERT ID', name: 'INSERT NAME', email: 'INSERT EMAIL' };
+    users.push(newData);
+    this.setState({ users })
+}
+
   renderEditable(cellInfo) {
     return (
       <div
@@ -55,6 +62,9 @@ class ShowUsers extends React.Component<{}, IUsersState> {
     const { data } = this.state;
     return (
       <div>
+        <Button onClick={() =>{ this.addRow(); }}>
+          <Icon><AddIcon /></Icon> Add user
+        </Button>
         <ReactTable
           data={data}
           columns={[
@@ -91,21 +101,19 @@ class ShowUsers extends React.Component<{}, IUsersState> {
             Cell: this.renderEditable
           },
           {
-          Header: "Delete",
+          sortable: false,
           filterable: false,
           style:{ textAlign: "Center" }, width:70,
           minWidth: 70, maxWidth: 70, Cell: props =>{
             return(
-                <button onClick={() =>{ this.deleteRow(props.original.id); }}>
+                <Button onClick={() =>{ this.deleteRow(props.original.id); }}>
                   <Icon><DeleteIcon /></Icon>
-                </button>
+                </Button>
             )}}
           ]}
-          defaultPageSize={25}
+          defaultPageSize={10}
           filterable
           noDataText={"No data..."}
-          showPaginationTop
-          showPaginationBottom={false}
           className="-highlight"
         />
       </div>
