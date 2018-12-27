@@ -1,16 +1,4 @@
-//kirjoitettu muistiin
-/*React-table fix copypaste:
-{test: /.jsx$/ , loader:'babel-loader', exclude: '/node_modules/'}
-@zeit/next-css/index.js sisälle
-
-config.module.rules.push({
-  test: /\.css$/,
-  use: options.defaultLoaders.css
-})
-*/
-
-//Jäin editointi ominaisuuden tekemiseen ShowUserdataan ja TestBoyn finishaamiseen
-//Korjaa sidenavin button
+//Korjaa bugi, joka estää ip:n kautta mentävänä sivulle loans return daten muokkauksen
 
 import React from 'react';
 import ReactDOM from 'react-dom';
