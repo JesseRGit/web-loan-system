@@ -1,101 +1,115 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
+import ReactTable from "react-table";
+import { users } from '../data';
+import matchSorter from 'match-sorter';
+import Icon from '@material-ui/core/Icon';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Link from 'next/link';
-
-const materials = [
-  { qty: '1', desc: '312', price: '332323' },
-  { qty: '2', desc: '3123', price: '3213' },
-  { qty: '3', desc: '3232', price: '21312' },
-  { qty: '4', desc: '3232', price: '3123' },
-  { qty: '5', desc: '123', price: '22132' },
-  { qty: '6', desc: '33221', price: '333' },
-  { qty: '7', desc: '323', price: '3232' },
-  { qty: '9', desc: '12312', price: '33232' }
-]
-
-interface ITestBoyState {
-  materials: materials;
+interface IUsersState {
+  data: any;
 }
 
-class TestBoy extends React.Component<{}, ITestBoyState> {
-  constructor(props) {
-    super(props)
+class ShowUsers extends React.Component<{}, IUsersState> {
+  constructor() {
+    super();
     this.state = {
-      materials: ['testitem'],
-    }
-    console.log("Materials at constructor:", this.materials)
+      data: users
+    };
+    this.renderEditable = this.renderEditable.bind(this);
   }
 
-  handleChange(index, dataType, value) {
-    const newState = this.state.materials.map((item, i) => {
-      if (i == index) {
-        return {...item, [dataType]: value};
-      }
-      return item;
-    });
+  deleteRow(id){
+    //console.log("id", id)
+    const index = users.findIndex(user =>{
+      return user.id === id
+    })
+    if (window.confirm("Delete user?")) {
+      users.splice(index, 1)
+      this.setState(users)
+  }
+}
 
-    this.setState({
-       materials: newState
-    });
+  renderEditable(cellInfo) {
+    return (
+      <div
+        style={{ backgroundColor: "#fafafa" }}
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={e => {
+          const data = [...this.state.data];
+          data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+          this.setState({ data });
+        }}
+        dangerouslySetInnerHTML={{
+          __html: this.state.data[cellInfo.index][cellInfo.column.id]
+        }}
+      />
+    );
   }
 
   public render() {
-    console.log(JSON.stringify(this.state.materials));
+    const { data } = this.state;
     return (
-      <Paper>
-        <h1>TestBoy</h1>
-        <Table className="table table-bordered">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  Qty
-                </TableCell>
-                <TableCell>
-                  Description
-                </TableCell>
-                <TableCell>
-                  Price
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-                {this.state.materials.map((row, index) => {
-                        (<TableRow>
-                            <TableCell>
-                              <input onChange={(e) => this.handleChange(index, 'qty', e.target.value)}
-                                     type='number'
-                                     className='form-control'
-                                     step='1' min="1"
-                                     value={this.state.materials[index].qty}/>
-                            </TableCell>
-                            <TableCell>
-                              <input onChange={(e) => this.handleChange(index, 'desc', e.target.value)}
-                                     type='text'
-                                     className='form-control'
-                                     value={this.state.materials[index].desc}/>
-                            </TableCell>
-                            <TableCell>
-                              <input onChange={(e) => this.handleChange(index, 'price', e.target.value)}
-                                     type='text'
-                                     className='form-control'
-                                     placeholder='6.00'
-                                     value={this.state.materials[index].price}/>
-                            </TableCell>
-                        </TableRow>
-                    )
-                })}
-            </TableBody>
-        </Table>
-      </Paper>
+      <div>
+        <ReactTable
+          data={data}
+          columns={[
+            {
+            Header: "Id",
+            id: "id",
+            accessor: d => d.id,
+            style:{ textAlign: "Right" },
+            width:100, minWidth: 100,
+            maxWidth: 100,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["id"] }),
+              filterAll: true,
+            Cell: this.renderEditable
+            },
+            {
+            Header: "Name",
+            id: "name",
+            accessor: d => d.name,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["name"] }),
+              filterAll: true,
+            Cell: this.renderEditable
+            },
+            {
+            Header: "Email",
+            id: "email",
+            accessor: d => d.email,
+            filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value,
+              { keys: ["email"] }),
+              filterAll: true,
+            Cell: this.renderEditable
+          },
+          {
+          Header: "Actions",
+          filterable: false,
+          style:{ textAlign: "Right" }, width:100,
+          minWidth: 100, maxWidth: 100, Cell: props =>{
+            return(
+                <button onClick={() =>{ this.deleteRow(props.original.id); }}>
+                  <Icon><DeleteIcon /></Icon>
+                </button>
+            )}}
+          ]}
+          defaultPageSize={10}
+          filterable
+          noDataText={"No data..."}
+          showPaginationTop
+          showPaginationBottom={false}
+          //className="-striped -highlight"
+        />
+      </div>
     );
   }
 }
-export default TestBoy;
+export default ShowUsers;

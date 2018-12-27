@@ -1,8 +1,8 @@
-import ShowUsers from '../src/components/TestBoy'
+import App from '../src/components/TestBoy2'
 import TopNav from '../src/components/TopNav';
 
 export default () =>
 <div>
   <TopNav />
-  <ShowUsers />
+  <App />
 </div>

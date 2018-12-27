@@ -13,10 +13,10 @@ interface IUsersState {
 
 class ShowUsers extends React.Component <{}, IUsersState> {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      users: ['testitem'],
-    }
+      users: { users }
+    };
   }
 
   deleteRow(id){
@@ -42,11 +42,24 @@ editRow(id){
     this.setState(users)
   }
 }
-/*
-let ids = [...this.state.ids];     // create the copy of state array
-ids[index] = 'k';                  //new value
-this.setState({ ids });            //update the value
-*/
+
+renderEditable(cellInfo) {
+    return (
+      <div
+        style={{ backgroundColor: "#fafafa" }}
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={e => {
+          const data = [...this.state.data];
+          data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+          this.setState({ data });
+        }}
+        dangerouslySetInnerHTML={{
+          __html: this.state.data[cellInfo.index][cellInfo.column.id]
+        }}
+      />
+    );
+  }
 
   public render() {
     const columns = [
@@ -59,7 +72,7 @@ this.setState({ ids });            //update the value
       filterMethod: (filter, rows) =>
       matchSorter(rows, filter.value,
         { keys: ["id"] }),
-        filterAll: true
+        filterAll: true,
       },
       { Header: "Name",
       id: "name",
