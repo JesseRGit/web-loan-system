@@ -61,7 +61,7 @@ addRow() {
     return (
       <div>
         <Button onClick={() =>{ this.addRow(); }}>
-          <Icon><AddIcon /></Icon> Add user
+          <Icon><AddIcon /></Icon> ADD USER
         </Button>
         <ReactTable
           data={data}

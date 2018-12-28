@@ -61,7 +61,7 @@ public render() {
   return (
     <div>
       <Button onClick={() =>{ this.addRow(); }}>
-        <Icon><AddIcon /></Icon> Add user
+        <Icon><AddIcon /></Icon> ADD LOAN
       </Button>
       <ReactTable
         data={data}
@@ -80,8 +80,8 @@ public render() {
           },
           {
           Header: "Device Id",
-          id: "deviceId",
-          accessor: d => d.deviceId,
+          id: "equipmentId",
+          accessor: d => d.equipmentId,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
             { keys: ["deviceId"] }),

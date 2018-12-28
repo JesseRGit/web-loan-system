@@ -61,7 +61,7 @@ public render() {
   return (
     <div>
       <Button onClick={() =>{ this.addRow(); }}>
-        <Icon><AddIcon /></Icon> Add device
+        <Icon><AddIcon /></Icon> ADD DEVICE
       </Button>
       <ReactTable
         data={data}
