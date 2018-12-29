@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 const styles = {
   list: {
-    width: 250,
+    width: 220,
   },
   fullList: {
     width: 'auto',
@@ -57,6 +57,7 @@ class SwipeableTemporaryDrawer extends React.Component {
                 </Button>
               </Link>
           </ListItem>
+          <Divider />
             <ListItem key="equipments">
               <Link href="/equipments">
                   <Button color="inherit">
@@ -82,6 +83,8 @@ class SwipeableTemporaryDrawer extends React.Component {
                 </Link>
             </ListItem>
         </List>
+        </div>
+        /*
         <Divider />
         <List>
           {['Change user', 'Logout'].map((text, index) => (
@@ -91,7 +94,8 @@ class SwipeableTemporaryDrawer extends React.Component {
             </ListItem>
           ))}
         </List>
-      </div>
+        </div>
+        */
     );
 
     const fullList = (
@@ -118,10 +122,10 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Button style={{ size: 'large', fullWidth: true, maxWidth: '85px', maxHeight: '85px', minWidth: '85px', minHeight: '85px' }}
+        <Button style={{ fullWidth: true, maxWidth: '40px', maxHeight: '40px', minWidth: '40px', minHeight: '40px' }}
           onClick={this.toggleDrawer('left', true)}>
             <Icon>
-              <ListIcon fontSize="large" />
+              <ListIcon />
             </Icon>
         </Button>
         <SwipeableDrawer

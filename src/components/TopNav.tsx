@@ -31,8 +31,11 @@ function TopNav(props) {
       <AppBar position="static">
         <Toolbar>
           <SwipeableTemporaryDrawer />
-          <Link href="/"><Button color="inherit"><h1>Loan System</h1></Button></Link>
-          <Link href="/testboy"><Button color="inherit">TESTBOY</Button></Link>
+            <Link href="/">
+              <Button style={{ maxHeight: '40px', minHeight: '40px' }} color="inherit">
+                <h1>Loan System</h1>
+              </Button>
+            </Link>
         </Toolbar>
       </AppBar>
     </div>

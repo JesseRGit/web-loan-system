@@ -148,7 +148,7 @@ public render() {
             </IconButton>
           )}}
         ]}
-        defaultPageSize={10}
+        defaultPageSize={20}
         filterable
         noDataText={"No data..."}
         className="-highlight"
