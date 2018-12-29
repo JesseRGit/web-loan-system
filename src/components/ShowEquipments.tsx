@@ -27,7 +27,7 @@ class ShowEquipments extends React.Component <{}, IEquipmentsState> {
     const index = equipments.findIndex(equipment =>{
       return equipment.id === id
     })
-    if (window.confirm("Remove equipment?")) {
+    if (window.confirm("Accept remove")) {
       equipments.splice(index, 1)
       this.setState({ equipments })
   }
@@ -99,16 +99,18 @@ public render() {
           Cell: this.renderEditable
         },
         {
-        sortable: false,
-        filterable: false,
-        style:{ textAlign: "Center" }, width:50,
-        minWidth: 50, maxWidth: 50,
-        Cell: props =>{
-          return(
-            <IconButton style={{ maxWidth: '50px', minWidth: '50px', maxHeight: '50px', maxHeight: '50px' }}
-                        onClick={() =>{ this.deleteRow(props.original.id); }}>
-              <DeleteIcon size="small"/>
-            </IconButton>
+          //Delete icon
+          sortable: false,
+          filterable: false,
+          style:{ textAlign: "Center" },
+          width:50,
+          minWidth: 50, maxWidth: 50,
+          Cell: props =>{
+            return(
+              <IconButton style={{ maxWidth: '20px', minWidth: '20px', maxHeight: '20px', maxHeight: '20px' }}
+                          onClick={() =>{ this.deleteRow(props.original.id); }}>
+                <DeleteIcon size="small"/>
+              </IconButton>
           )}}
         ]}
         defaultPageSize={10}

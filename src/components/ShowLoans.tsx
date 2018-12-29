@@ -27,14 +27,19 @@ class ShowLoans extends React.Component <{}, ILoansState> {
     const index = loans.findIndex(loan =>{
       return loan.id === id
     })
-    if (window.confirm("Remove loan?")) {
+    if (window.confirm("Accept remove")) {
       loans.splice(index, 1)
       this.setState({ loans })
   }
 }
 
 addRow() {
-    const newData = { id: 'INSERT ID', equipmentId: 'INSERT EQUIPMENT ID', userId: 'INSERT USER ID', begins: 'INSERT START DATE', ends: 'INSERT END DATE', returned: "INSERT IF RETURNED ALREADY" };
+    const newData = { id: 'INSERT ID',
+    equipmentId: 'INSERT EQUIPMENT ID',
+    userId: 'INSERT USER ID',
+    begins: 'INSERT START DATE',
+    ends: 'INSERT END DATE',
+    returned: "INSERT IF RETURNED ALREADY" };
     loans.push(newData);
     this.setState({ loans })
 }
@@ -132,11 +137,12 @@ public render() {
         //Delete icon
         sortable: false,
         filterable: false,
-        style:{ textAlign: "Center" }, width:50,
+        style:{ textAlign: "Center" },
+        width:50,
         minWidth: 50, maxWidth: 50,
         Cell: props =>{
           return(
-            <IconButton style={{ maxWidth: '50px', minWidth: '50px', maxHeight: '50px', maxHeight: '50px' }}
+            <IconButton style={{ maxWidth: '20px', minWidth: '20px', maxHeight: '20px', maxHeight: '20px' }}
                         onClick={() =>{ this.deleteRow(props.original.id); }}>
               <DeleteIcon size="small"/>
             </IconButton>
