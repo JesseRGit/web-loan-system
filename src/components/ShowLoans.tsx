@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import ReactTable from "react-table";
+import "react-table/react-table.css";
 import { loans } from '../data';
 import matchSorter from 'match-sorter';
 import Icon from '@material-ui/core/Icon';
@@ -15,8 +16,8 @@ interface ILoansState {
 }
 
 class ShowLoans extends React.Component <{}, ILoansState> {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: loans
     };
@@ -47,7 +48,7 @@ addRow() {
 renderEditable(cellInfo) {
   return (
     <div
-      style={{ backgroundColor: "#fafafa" }}
+      //style={{ backgroundColor: "#fafafa" }}
       contentEditable
       suppressContentEditableWarning
       onBlur={e => {
@@ -151,7 +152,7 @@ public render() {
         defaultPageSize={20}
         filterable
         noDataText={"No data..."}
-        className="-highlight"
+        className="-striped -highlight"
       />
     </div>
   );

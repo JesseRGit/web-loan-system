@@ -66,19 +66,19 @@ class SwipeableTemporaryDrawer extends React.Component {
                   </Button>
                 </Link>
             </ListItem>
-            <ListItem key="loans">
-              <Link href="/loans">
-                  <Button color="inherit">
-                    <ListItemIcon><ArrowRightAltIcon /></ListItemIcon>
-                    <ListItemText primary="loans" />
-                  </Button>
-                </Link>
-            </ListItem>
             <ListItem key="users">
               <Link href="/users">
                   <Button color="inherit">
                     <ListItemIcon><FaceIcon /></ListItemIcon>
                     <ListItemText primary="users" />
+                  </Button>
+                </Link>
+            </ListItem>
+            <ListItem key="loans">
+              <Link href="/loans">
+                  <Button color="inherit">
+                    <ListItemIcon><ArrowRightAltIcon /></ListItemIcon>
+                    <ListItemText primary="loans" />
                   </Button>
                 </Link>
             </ListItem>

@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import ReactTable from "react-table";
+import "react-table/react-table.css";
 import { users } from '../data';
 import matchSorter from 'match-sorter';
 import Icon from '@material-ui/core/Icon';
@@ -42,7 +43,7 @@ addRow() {
   renderEditable(cellInfo) {
     return (
       <div
-        style={{ backgroundColor: "#fafafa" }}
+        //style={{ backgroundColor: "#fafafa" }}
         contentEditable
         suppressContentEditableWarning
         onBlur={e => {
@@ -116,7 +117,7 @@ addRow() {
           defaultPageSize={20}
           filterable
           noDataText={"No data..."}
-          className="-highlight"
+          className="-striped -highlight"
         />
       </div>
     );
