@@ -16,8 +16,8 @@ interface ILoansState {
 }
 
 class ShowLoans extends React.Component <{}, ILoansState> {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       data: loans
     };
