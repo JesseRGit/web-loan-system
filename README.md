@@ -1,5 +1,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-typescript)
 
+websyksy2018-14.course.tamk.cloud
+
 # TypeScript Next.js example
 
 This is a really simple project that show the usage of Next.js with TypeScript.
