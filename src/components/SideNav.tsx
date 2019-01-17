@@ -52,7 +52,7 @@ class SwipeableTemporaryDrawer extends React.Component {
           <ListItem key="home">
             <Link href="/">
                 <Button color="inherit">
-                  <ListItemIcon><HomeIcon /></ListItemIcon>
+                  <HomeIcon />
                   <ListItemText primary="home" />
                 </Button>
               </Link>
@@ -61,7 +61,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="equipments">
               <Link href="/equipments">
                   <Button color="inherit">
-                    <ListItemIcon><ComputerIcon /></ListItemIcon>
+                    <ComputerIcon />
                     <ListItemText primary="equipments" />
                   </Button>
                 </Link>
@@ -69,7 +69,7 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="users">
               <Link href="/users">
                   <Button color="inherit">
-                    <ListItemIcon><FaceIcon /></ListItemIcon>
+                    <FaceIcon />
                     <ListItemText primary="users" />
                   </Button>
                 </Link>
@@ -77,25 +77,13 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItem key="loans">
               <Link href="/loans">
                   <Button color="inherit">
-                    <ListItemIcon><ArrowRightAltIcon /></ListItemIcon>
+                    <ArrowRightAltIcon />
                     <ListItemText primary="loans" />
                   </Button>
                 </Link>
             </ListItem>
         </List>
         </div>
-        /*
-        <Divider />
-        <List>
-          {['Change user', 'Logout'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        </div>
-        */
     );
 
     const fullList = (
@@ -122,11 +110,9 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     return (
       <div>
-        <Button style={{ fullWidth: true, maxWidth: '40px', maxHeight: '40px', minWidth: '40px', minHeight: '40px' }}
+        <Button style={{ maxWidth: '60px', maxHeight: '80px', minWidth: '60px', minHeight: '80px' }}
           onClick={this.toggleDrawer('left', true)}>
-            <Icon>
               <ListIcon />
-            </Icon>
         </Button>
         <SwipeableDrawer
           open={this.state.left}

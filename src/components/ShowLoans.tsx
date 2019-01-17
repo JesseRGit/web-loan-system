@@ -67,7 +67,7 @@ public render() {
   return (
     <div>
       <Button onClick={() =>{ this.addRow(); }}>
-        <Icon><AddIcon /></Icon> ADD LOAN
+        <AddIcon /> ADD LOAN
       </Button>
       <ReactTable
         data={data}
@@ -75,6 +75,7 @@ public render() {
           {
           Header: "Id",
           id: "id",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.id,
           width:100, minWidth: 100,
           maxWidth: 100,
@@ -87,6 +88,7 @@ public render() {
           {
           Header: "Device Id",
           id: "equipmentId",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.equipmentId,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
@@ -97,6 +99,7 @@ public render() {
           {
           Header: "User Id",
           id: "userId",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.userId,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
@@ -107,6 +110,7 @@ public render() {
           {
           Header: "Begins",
           id: "begins",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.begins,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
@@ -117,6 +121,7 @@ public render() {
           {
           Header: "Ends",
           id: "ends",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.ends,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
@@ -127,6 +132,7 @@ public render() {
           {
           Header: "Returned",
           id: "returned",
+          style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
           accessor: d => d.returned,
           filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value,
@@ -143,9 +149,10 @@ public render() {
         minWidth: 50, maxWidth: 50,
         Cell: props =>{
           return(
-            <IconButton style={{ maxWidth: '20px', minWidth: '20px', maxHeight: '20px', maxHeight: '20px' }}
-                        onClick={() =>{ this.deleteRow(props.original.id); }}>
-              <DeleteIcon size="small"/>
+            <IconButton>
+              <DeleteIcon size="large" style={{ maxWidth: '20px', minWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
+                onClick={() =>{ this.deleteRow(props.original.id); }}>
+              </DeleteIcon>
             </IconButton>
           )}}
         ]}

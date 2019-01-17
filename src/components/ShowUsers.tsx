@@ -62,7 +62,7 @@ addRow() {
     return (
       <div>
         <Button onClick={() =>{ this.addRow(); }}>
-          <Icon><AddIcon /></Icon> ADD USER
+          <AddIcon /> ADD USER
         </Button>
         <ReactTable
           data={data}
@@ -70,6 +70,7 @@ addRow() {
             {
             Header: "Id",
             id: "id",
+            style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
             accessor: d => d.id,
             width:100, minWidth: 100,
             maxWidth: 100,
@@ -82,6 +83,7 @@ addRow() {
             {
             Header: "Name",
             id: "name",
+            style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
             accessor: d => d.name,
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
@@ -92,6 +94,7 @@ addRow() {
             {
             Header: "Email",
             id: "email",
+            style: { display: "flex" , flexDirection: "column", justifyContent: "center" },
             accessor: d => d.email,
             filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value,
@@ -108,9 +111,10 @@ addRow() {
             minWidth: 50, maxWidth: 50,
             Cell: props =>{
               return(
-                <IconButton style={{ maxWidth: '20px', minWidth: '20px', maxHeight: '20px', maxHeight: '20px' }}
-                            onClick={() =>{ this.deleteRow(props.original.id); }}>
-                  <DeleteIcon size="small"/>
+                <IconButton>
+                  <DeleteIcon size="large" style={{ maxWidth: '20px', minWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
+                    onClick={() =>{ this.deleteRow(props.original.id); }}>
+                  </DeleteIcon>
                 </IconButton>
             )}}
           ]}

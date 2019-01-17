@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { render } from "react-dom";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
-import TopNav from './components/TopNav';
+interface IHomeState {
+  data: any;
+}
 
-const Home: React.SFC<{prop1: string, prop2: number}> = () => {
-  return (
+class Home extends React.Component<{}, IHomeState> {
+  public render() {
+    return (
     <div>
-      <div>
-        <TopNav />
-      </div>
-      <h1>Welcome!</h1>
-      <div>You can use this add, edit and remove loan system's devices, users and loans.</div>
-      <div>Start by clicking top left icon and selecting what you want to see.</div>
+      <h1>Welcome to use Loan system!</h1>
+      <div>You can use this to add, edit and remove loan system's equipment, users and loans.</div>
+      <div>Start by clicking top left icon and selecting one of the sections.</div>
   </div>
   )
+  }
 }
 
 export default Home;

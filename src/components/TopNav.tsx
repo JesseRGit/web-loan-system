@@ -20,7 +20,7 @@ const styles = {
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 20
   },
 };
 
@@ -28,14 +28,17 @@ function TopNav(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ maxHeight: '80px', minHeight: '80px' }} position="static">
         <Toolbar>
           <SwipeableTemporaryDrawer />
             <Link href="/">
-              <Button style={{ maxHeight: '40px', minHeight: '40px' }} color="inherit">
-                <h1>Loan System</h1>
+              <Button style={{ maxHeight: '80px', minHeight: '80px' }} size="large" color="inherit">
+                 <Typography style= {{  fontSize: 36 }} variant="title" color="inherit">Loan System</Typography>
               </Button>
             </Link>
+            <Typography variant="madeby" style={{ marginLeft: 'auto', marginRight: -12 }} color="inherit" >
+              Made by Jesse Rönkkö
+            </Typography>
         </Toolbar>
       </AppBar>
     </div>
