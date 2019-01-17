@@ -149,9 +149,8 @@ public render() {
         minWidth: 50, maxWidth: 50,
         Cell: props =>{
           return(
-            <IconButton>
-              <DeleteIcon size="large" style={{ maxWidth: '20px', minWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
-                onClick={() =>{ this.deleteRow(props.original.id); }}>
+            <IconButton onClick={() =>{ this.deleteRow(props.original.id); }}>
+              <DeleteIcon size="large" style={{ maxWidth: '20px', minWidth: '20px', minHeight: '20px', maxHeight: '20px' }}>
               </DeleteIcon>
             </IconButton>
           )}}

@@ -36,7 +36,7 @@ function TopNav(props) {
                  <Typography style= {{  fontSize: 36 }} variant="title" color="inherit">Loan System</Typography>
               </Button>
             </Link>
-            <Typography variant="madeby" style={{ marginLeft: 'auto', marginRight: -12 }} color="inherit" >
+            <Typography variant="subtitle1" style={{ marginLeft: 'auto', marginRight: -12 }} color="inherit" >
               Made by Jesse Rönkkö
             </Typography>
         </Toolbar>
