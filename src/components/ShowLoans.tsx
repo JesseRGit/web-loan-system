@@ -1,13 +1,10 @@
 import React from "react";
-import { render } from "react-dom";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { loans } from '../data';
 import matchSorter from 'match-sorter';
-import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
@@ -28,7 +25,7 @@ class ShowLoans extends React.Component <{}, ILoansState> {
     const index = loans.findIndex(loan =>{
       return loan.id === id
     })
-    if (window.confirm("Accept remove")) {
+    if (window.confirm("Remove loan?")) {
       loans.splice(index, 1)
       this.setState({ loans })
   }

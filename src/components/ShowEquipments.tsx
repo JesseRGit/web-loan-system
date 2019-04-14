@@ -1,13 +1,10 @@
 import React from "react";
-import { render } from "react-dom";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { equipments } from '../data';
 import matchSorter from 'match-sorter';
-import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
@@ -28,7 +25,7 @@ class ShowEquipments extends React.Component <{}, IEquipmentsState> {
     const index = equipments.findIndex(equipment =>{
       return equipment.id === id
     })
-    if (window.confirm("Accept remove")) {
+    if (window.confirm("Remove equipment?")) {
       equipments.splice(index, 1)
       this.setState({ equipments })
   }

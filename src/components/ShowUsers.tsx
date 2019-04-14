@@ -1,13 +1,10 @@
 import React from "react";
-import { render } from "react-dom";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { users } from '../data';
 import matchSorter from 'match-sorter';
-import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
@@ -28,7 +25,7 @@ class ShowUsers extends React.Component<{}, IUsersState> {
     const index = users.findIndex(user =>{
       return user.id === id
     })
-    if (window.confirm("Accept remove")) {
+    if (window.confirm("Remove user?")) {
       users.splice(index, 1)
       this.setState({ users })
   }

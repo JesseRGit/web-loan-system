@@ -13,8 +13,8 @@ class Home extends React.Component<{}, IHomeState> {
     return (
     <div>
       <h1>Welcome to use Loan system!</h1>
-      <div>You can use this to add, edit and remove loan system's equipment, users and loans.</div>
-      <div>Start by clicking top left icon and selecting one of the sections.</div>
+      <p>You can use this site to add, edit and remove loan system's equipment, users and loans.</p>
+      <p>Start by clicking top left icon and selecting one of the sections.</p>
   </div>
   )
   }
